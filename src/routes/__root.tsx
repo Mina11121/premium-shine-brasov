@@ -76,11 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Clinica de Covoare — Curățenie & Întreținere Premium Brașov" },
       { name: "description", content: "De peste 17 ani definim standardul de curățenie profesională în Brașov. Administrare imobile, curățenie post-construcție, spălare covoare, mentenanță birouri." },
       { name: "author", content: "Clinica de Covoare Brașov" },
-      { property: "og:title", content: "Clinica de Covoare — Curățenie Premium Brașov" },
-      { property: "og:description", content: "Servicii premium de curățenie și întreținere în Brașov. Experiență din 2007." },
+      { property: "og:title", content: "Clinica de Covoare — Curățenie & Întreținere Premium Brașov" },
+      { property: "og:description", content: "De peste 17 ani definim standardul de curățenie profesională în Brașov. Administrare imobile, curățenie post-construcție, spălare covoare, mentenanță birouri." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Clinica de Covoare — Curățenie & Întreținere Premium Brașov" },
+      { name: "twitter:description", content: "De peste 17 ani definim standardul de curățenie profesională în Brașov. Administrare imobile, curățenie post-construcție, spălare covoare, mentenanță birouri." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/108402c2-21f6-4dc9-a26e-657e2ac7bc7b/id-preview-2107fa80--7daca825-9904-464c-8218-70501fd15ad4.lovable.app-1779658131917.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/108402c2-21f6-4dc9-a26e-657e2ac7bc7b/id-preview-2107fa80--7daca825-9904-464c-8218-70501fd15ad4.lovable.app-1779658131917.png" },
     ],
     links: [
       {
