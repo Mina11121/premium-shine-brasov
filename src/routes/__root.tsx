@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { SiteShell } from "@/components/site-layout";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Clinica de Covoare — Curățenie & Întreținere Premium Brașov" },
+      { name: "description", content: "De peste 17 ani definim standardul de curățenie profesională în Brașov. Administrare imobile, curățenie post-construcție, spălare covoare, mentenanță birouri." },
+      { name: "author", content: "Clinica de Covoare Brașov" },
+      { property: "og:title", content: "Clinica de Covoare — Curățenie Premium Brașov" },
+      { property: "og:description", content: "Servicii premium de curățenie și întreținere în Brașov. Experiență din 2007." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -113,7 +114,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <SiteShell>
+        <Outlet />
+      </SiteShell>
     </QueryClientProvider>
   );
 }
