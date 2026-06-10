@@ -14,7 +14,7 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden md:flex items-center gap-10 text-[12px] font-semibold uppercase tracking-[0.18em]">
           <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "text-primary" }} className="hover:text-primary transition-colors">Acasă</Link>
-          <Link to="/servicii" activeProps={{ className: "text-primary" }} className="hover:text-primary transition-colors">Servicii</Link>
+          <Link to="/servicii" activeProps={{ className: "text-primary" }} className="hover:text-primary transition-colors">Proces & Tarife</Link>
           <Link to="/despre" activeProps={{ className: "text-primary" }} className="hover:text-primary transition-colors">Despre</Link>
           <a
             href={WHATSAPP_URL}
@@ -43,19 +43,18 @@ export function SiteFooter() {
             <span className="text-base font-extrabold tracking-tight uppercase">Clinica de Covoare</span>
           </div>
           <p className="text-background/60 text-sm leading-relaxed max-w-md">
-            Din 2007, redăm strălucirea spațiilor de lucru și de locuit din Brașov prin servicii integrate de curățenie și întreținere, executate cu rigoare tehnică.
+            Din 2007, atelierul nostru din Brașov spală manual și mecanizat covoare de orice tip — persane, lână, mătase, viscoză, blană sau șagrinate — cu rigoarea unei clinici și răbdarea unui artizan.
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/40">Brașov · România</p>
         </div>
         <div className="space-y-4">
-          <h5 className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/40 font-bold">Servicii</h5>
+          <h5 className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/40 font-bold">Navigație</h5>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/servicii" hash="administrare" className="hover:text-primary">Administrare clădiri</Link></li>
-            <li><Link to="/servicii" hash="post-constructie" className="hover:text-primary">Post-construcție</Link></li>
-            <li><Link to="/servicii" hash="covoare" className="hover:text-primary">Spălare covoare</Link></li>
-            <li><Link to="/servicii" hash="birouri" className="hover:text-primary">Mentenanță birouri</Link></li>
-            <li><Link to="/servicii" hash="auto" className="hover:text-primary">Tapițerii auto</Link></li>
-            <li><Link to="/servicii" hash="generala" className="hover:text-primary">Curățenie generală</Link></li>
+            <li><Link to="/" hash="galerie" className="hover:text-primary">Galerie before / after</Link></li>
+            <li><Link to="/servicii" className="hover:text-primary">Proces & tarife</Link></li>
+            <li><Link to="/servicii" hash="tipuri" className="hover:text-primary">Tipuri de covoare</Link></li>
+            <li><Link to="/servicii" hash="faq" className="hover:text-primary">Întrebări frecvente</Link></li>
+            <li><Link to="/despre" className="hover:text-primary">Despre atelier</Link></li>
           </ul>
         </div>
         <div className="space-y-4">
