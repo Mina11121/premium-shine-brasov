@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero.jpg";
-import { services } from "@/data/services";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import heroImg from "@/assets/hero-covoare.jpg";
+import atelierImg from "@/assets/atelier.jpg";
+import processImg from "@/assets/process-detail.jpg";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
@@ -13,41 +13,82 @@ const WhatsAppIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clinica de Covoare — Curățenie Premium în Brașov din 2007" },
-      { name: "description", content: "Servicii integrate de curățenie și întreținere pentru companii și rezidențe în Brașov. Administrare imobile, post-construcție, covoare, birouri, auto." },
+      { title: "Clinica de Covoare — Curățătorie Premium de Covoare în Brașov" },
+      { name: "description", content: "Spălare profesională de covoare persane, lână, mătase, viscoză și blană în atelierul nostru din Brașov. Preluare și livrare gratuită. Din 2007." },
     ],
   }),
   component: Index,
 });
 
+// Placeholder slots for the user's own before/after photos.
+// Replace `beforeImg` / `afterImg` with imported images when ready.
+type BeforeAfterSlot = {
+  id: string;
+  label: string;
+  caption: string;
+  beforeImg?: string;
+  afterImg?: string;
+};
+
+const beforeAfterSlots: BeforeAfterSlot[] = [
+  { id: "ba-01", label: "Persan vișiniu · 3x4m", caption: "Pată veche de vin, dispărută integral" },
+  { id: "ba-02", label: "Shaggy crem · 2x3m", caption: "Praf, păr de pisică și miros eliminate" },
+  { id: "ba-03", label: "Kilim de lână · 1.5x2m", caption: "Culori reactivate, franjuri albiți manual" },
+  { id: "ba-04", label: "Mătase Tabriz · 2x3m", caption: "Tratament delicat, fără pierderi de luciu" },
+];
+
+function PhotoSlot({ kind, src, label }: { kind: "before" | "after"; src?: string; label: string }) {
+  return (
+    <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-secondary to-muted border border-border">
+      {src ? (
+        <img src={src} alt={label} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 gap-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary font-bold">
+            {kind === "before" ? "[ Înainte ]" : "[ După ]"}
+          </span>
+          <span className="block h-px w-12 bg-primary/40" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            Spațiu pentru poză
+          </span>
+        </div>
+      )}
+      <span className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.25em] bg-foreground text-background px-2 py-1 font-bold">
+        {kind === "before" ? "Înainte" : "După"}
+      </span>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <>
-      {/* HERO with big background image */}
-      <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden -mt-20">
+      {/* HERO */}
+      <section className="relative h-[94vh] min-h-[640px] w-full overflow-hidden -mt-20">
         <img
           src={heroImg}
-          alt="Lobby corporativ premium curățat de Clinica de Covoare Brașov"
+          alt="Covor persan vișiniu spălat manual în atelierul Clinica de Covoare Brașov"
           width={1920}
-          height={1280}
+          height={1080}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-transparent" />
 
         <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end pb-24 pt-32">
           <div className="max-w-3xl space-y-8 text-background">
             <div className="inline-flex items-center gap-3">
               <div className="h-px w-12 bg-primary" />
               <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary font-bold">
-                Fondat în 2007 · Brașov
+                Atelier de curățătorie · Brașov · Din 2007
               </span>
             </div>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight text-balance">
-              Standardul de <em className="italic text-primary not-italic font-normal">precizie</em> în curățenia profesională.
+              Covoarele tale,<br/>
+              <em className="italic text-primary not-italic font-normal">spălate ca în prima zi.</em>
             </h1>
             <p className="text-lg md:text-xl text-background/75 max-w-xl leading-relaxed font-light">
-              De peste 17 ani redăm strălucirea spațiilor de lucru și de locuit din Brașov. Echipa, instrumentele și disciplina noastră fac diferența.
+              Spălare manuală și mecanizată în atelier propriu. Persane, lână, mătase, viscoză, blană sau șagrinate — fiecare fibră, tratamentul ei. Preluare și livrare gratuită în Brașov.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a
@@ -57,14 +98,14 @@ function Index() {
                 className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-bold uppercase tracking-[0.18em] text-xs hover:bg-[#1ebe57] transition-colors"
               >
                 <WhatsAppIcon className="h-5 w-5" />
-                Scrie-ne pe WhatsApp
+                Programează ridicarea
               </a>
-              <Link
-                to="/servicii"
+              <a
+                href="#galerie"
                 className="px-8 py-4 border border-background/40 text-background font-bold uppercase tracking-[0.18em] text-xs hover:bg-background hover:text-foreground transition-colors"
               >
-                Explorează serviciile
-              </Link>
+                Vezi before / after
+              </a>
             </div>
           </div>
         </div>
@@ -74,14 +115,14 @@ function Index() {
         </div>
       </section>
 
-      {/* STATS strip */}
+      {/* STATS */}
       <section className="border-b border-border bg-card">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
           {[
-            ["01", "17+ ani", "Experiență neîntreruptă"],
-            ["02", "450k m²", "Suprafață administrată"],
-            ["03", "1.200+", "Clienți în portofoliu"],
-            ["04", "24/7", "Disponibilitate operațională"],
+            ["01", "17+ ani", "Experiență în atelier"],
+            ["02", "28.000+", "Covoare spălate"],
+            ["03", "48h", "Termen mediu de livrare"],
+            ["04", "0 lei", "Preluare și livrare"],
           ].map(([n, big, label]) => (
             <div key={n} className="py-12 px-4 md:px-8 first:pl-0 last:pr-0">
               <span className="block font-mono text-xs text-primary mb-3">[{n}]</span>
@@ -94,107 +135,120 @@ function Index() {
         </div>
       </section>
 
-      {/* INTRO — Despre */}
+      {/* MANIFESTO */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-4">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
-              [ Cap. 01 — Filosofia noastră ]
+              [ Cap. 01 — Filosofia atelierului ]
             </span>
           </div>
           <div className="md:col-span-8 space-y-8">
             <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight tracking-tight text-balance">
-              De peste 17 ani în lupta cu murdăria, ghidați de disciplină tehnică și respect pentru detaliu.
+              Un covor nu se spală. Se îngrijește. Fibră cu fibră, nod cu nod.
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Activăm pe piața de specialitate încă din anul 2007. Experiența dobândită, cultura și valorile noastre, dar mai ales instrumentele și echipamentele folosite ne recomandă în lupta cu rezultatele nedorite din activitățile clienților noștri. Devenim astfel echipa care poate reda, în modul cel mai eficient, strălucirea spațiilor.
+              Pentru noi, fiecare covor are istoria lui — moștenit de la bunici, adus dintr-o călătorie, cumpărat pentru salonul nou. Indiferent de valoarea lui sentimentală sau materială, primește același tratament: apă curată, șampoane pH-neutru, mâini de profesioniști și răbdarea de a-l usca exact cât trebuie.
             </p>
-            <div className="pt-4">
-              <Link to="/despre" className="font-mono text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors">
-                Citește povestea →
-              </Link>
-            </div>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Nu lucrăm „la kilogram" și nu spălăm două covoare în același cazan. Fiecare piesă este tratată separat, evaluată separat, livrată separat.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* SERVICES grid */}
-      <section className="border-t border-border bg-card">
+      {/* BEFORE / AFTER GALLERY */}
+      <section id="galerie" className="scroll-mt-24 border-t border-border bg-card">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-            <div className="max-w-xl space-y-4">
+            <div className="max-w-2xl space-y-4">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
-                [ Cap. 02 — Servicii ]
+                [ Cap. 02 — Galerie ]
               </span>
               <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight tracking-tight">
-                Șase discipline. Un singur standard.
+                Diferența se vede. Mai ales pe lângă.
               </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Fotografii reale din atelier — același covor, înainte de procedură și după. Fără filtre, fără retuș, fără promisiuni goale.
+              </p>
             </div>
-            <Link to="/servicii" className="font-mono text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors w-fit">
-              Toate serviciile →
-            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors w-fit"
+            >
+              Trimite-mi covorul tău →
+            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
-            {services.map((s) => (
-              <Link
-                key={s.id}
-                to="/servicii"
-                hash={s.id}
-                className="group relative bg-card p-8 hover:bg-background transition-all duration-500"
-              >
-                <div className="absolute top-0 left-0 w-[2px] h-0 bg-primary group-hover:h-full transition-all duration-500" />
-                <div className="mb-6 overflow-hidden">
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    loading="lazy"
-                    width={1024}
-                    height={768}
-                    className="w-full aspect-[4/3] object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  />
+          <div className="space-y-16">
+            {beforeAfterSlots.map((slot, idx) => (
+              <div key={slot.id} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div className="lg:col-span-1 hidden lg:block">
+                  <span className="font-mono text-xs text-primary font-bold">[0{idx + 1}]</span>
                 </div>
-                <div className="flex items-baseline gap-3 mb-3">
-                  <span className="font-mono text-xs text-primary font-bold">[{s.number}]</span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {s.tagline}
+                <div className="lg:col-span-5 grid grid-cols-2 gap-3">
+                  <PhotoSlot kind="before" src={slot.beforeImg} label={slot.label} />
+                  <PhotoSlot kind="after" src={slot.afterImg} label={slot.label} />
+                </div>
+                <div className="lg:col-span-6 lg:pl-12 space-y-3">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    Caz #{String(idx + 1).padStart(2, "0")}
                   </span>
+                  <h3 className="font-serif text-2xl md:text-3xl font-light leading-tight">{slot.label}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{slot.caption}</p>
                 </div>
-                <h3 className="font-serif text-2xl font-normal mb-3 leading-snug">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{s.description}</p>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-primary">
-                  Detalii →
-                </span>
-              </Link>
+              </div>
             ))}
+          </div>
+
+          <div className="mt-20 border-t border-border pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              [ Slot-uri pregătite pentru fotografiile voastre din atelier ]
+            </p>
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              Update săptămânal
+            </span>
           </div>
         </div>
       </section>
 
-      {/* METHOD */}
-      <section className="py-32 px-6 bg-foreground text-background">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+      {/* PROCESS */}
+      <section className="relative overflow-hidden bg-foreground text-background">
+        <img
+          src={processImg}
+          alt="Detaliu spălare manuală a unui covor"
+          loading="lazy"
+          width={1200}
+          height={1500}
+          className="absolute inset-0 h-full w-full object-cover opacity-20"
+        />
+        <div className="relative max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-32 self-start">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
-              [ Cap. 03 — Metodologie ]
+              [ Cap. 03 — Procesul ]
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight tracking-tight text-balance">
-              Fiecare proiect, o operațiune cu plan, execuție și raport.
+              Șapte pași. Niciun compromis.
             </h2>
             <p className="text-background/60 leading-relaxed">
-              Nu improvizăm. Pentru fiecare contract construim un plan tehnic, alocăm echipa potrivită și măsurăm rezultatul.
+              Fiecare covor trece prin același protocol — pentru că rezultatul final depinde de fiecare etapă, nu doar de spălarea propriu-zisă.
             </p>
           </div>
           <div className="lg:col-span-7 flex flex-col divide-y divide-background/10">
             {[
-              ["Consultanță & audit", "Specialiștii noștri evaluează spațiul, suprafețele și gradul de uzură pentru un plan personalizat."],
-              ["Plan tehnic & ofertă", "Stabilim frecvențele, materialele, echipamentele și costurile, într-o ofertă transparentă."],
-              ["Execuție monitorizată", "Implementarea sub supravegherea unui manager dedicat, cu echipa instruită pentru tipul de proiect."],
-              ["Verificare & raportare", "Audit de calitate la finalizare și raport detaliat al intervenției pentru orice client B2B."],
+              ["Preluare gratuită", "Venim la adresa ta, evaluăm covorul pe loc și îl preluăm într-un ambalaj curat. Primești bon de preluare."],
+              ["Inspecție & test culori", "Identificăm fibra, vechimea, pătările dificile și testăm migrarea culorilor pe o porțiune ascunsă."],
+              ["Praf-out mecanizat", "Extragem praful adânc cu echipament dedicat. Un covor poate ține până la 1.5 kg de praf invizibil pe metru pătrat."],
+              ["Spălare adaptată", "Manuală pentru piese delicate sau de valoare, automatizată pentru covoare moderne. Soluții pH-neutru, bio-degradabile."],
+              ["Detratare pete", "Vin, cafea, urină de animale, grăsimi, machiaj — fiecare pată primește soluția ei, fără să atace fibra."],
+              ["Uscare controlată", "Spațiu dedicat cu temperatură și umiditate reglate. Pe verticală pentru a păstra forma, ferit de soare direct."],
+              ["Periere & livrare", "Periere finală pentru reactivarea texturii, ambalare în folie protectoare, livrare la adresa ta."],
             ].map(([title, desc], i) => (
-              <div key={i} className="py-10 flex gap-8">
+              <div key={i} className="py-8 flex gap-8">
                 <span className="font-mono text-sm text-primary font-bold pt-1">0{i + 1}</span>
-                <div className="flex-1 space-y-3">
+                <div className="flex-1 space-y-2">
                   <h4 className="font-serif text-2xl font-normal">{title}</h4>
                   <p className="text-background/60 leading-relaxed">{desc}</p>
                 </div>
@@ -204,15 +258,92 @@ function Index() {
         </div>
       </section>
 
+      {/* TYPES TEASER */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div className="md:col-span-4">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
+                [ Cap. 04 — Ce spălăm ]
+              </span>
+            </div>
+            <div className="md:col-span-8 space-y-6">
+              <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight tracking-tight text-balance">
+                Persane, lână, mătase, viscoză, blană, șagrinate.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                Nu există fibră pe care să nu o fi spălat. Fiecare covor primește chimia, temperatura și uscarea care i se potrivesc — nu un protocol standardizat aplicat orbește.
+              </p>
+              <Link to="/servicii" className="inline-block font-mono text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors">
+                Vezi tipurile detaliat →
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
+            {[
+              "Persane & orientale",
+              "Lână naturală",
+              "Mătase & viscoză",
+              "Blană & shaggy",
+              "Kilim & țesute plat",
+              "Bumbac",
+              "Sintetice moderne",
+              "Mochete & traverse",
+            ].map((t) => (
+              <div key={t} className="bg-card p-8 flex items-center justify-center text-center hover:bg-background transition-colors">
+                <span className="font-serif text-lg font-light">{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROMISE */}
+      <section className="border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <img
+            src={atelierImg}
+            alt="Atelierul nostru de covoare din Brașov"
+            loading="lazy"
+            width={1600}
+            height={1200}
+            className="w-full aspect-[4/3] object-cover"
+          />
+          <div className="space-y-8">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
+              [ Promisiunea atelierului ]
+            </span>
+            <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight tracking-tight">
+              Dacă nu ești mulțumit, nu plătești.
+            </h2>
+            <ul className="space-y-4 text-foreground/85">
+              {[
+                "Preluare și livrare gratuită în Brașov și 20 km împrejur",
+                "Cotaț ferm la preluare — fără surprize la livrare",
+                "Garanție de re-spălare gratuită pentru orice pată reapărută",
+                "Asigurare integrală a covoarelor pe durata procesului",
+                "Termen mediu de 48–72h pentru covoarele standard",
+              ].map((line) => (
+                <li key={line} className="flex gap-4">
+                  <span className="font-mono text-primary mt-1">+</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto border border-border p-12 md:p-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
           <div className="space-y-4 max-w-xl">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
-              Răspundem în 24h
+              Răspundem în mai puțin de o oră
             </span>
             <h2 className="font-serif text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Sunteți pregătiți pentru un spațiu administrat ireproșabil?
+              Spune-ne ce covor ai și unde locuiești. Venim la tine.
             </h2>
           </div>
           <div className="flex flex-col items-start md:items-end gap-3">
@@ -223,7 +354,7 @@ function Index() {
               className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-bold uppercase tracking-[0.18em] text-xs hover:bg-[#1ebe57] transition-colors"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              Scrie-ne pe WhatsApp
+              Programează ridicarea
             </a>
             <span className="font-mono text-sm text-muted-foreground">{WHATSAPP_DISPLAY}</span>
           </div>

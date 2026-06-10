@@ -1,11 +1,8 @@
-import postConstructieImg from "@/assets/service-post-constructie.jpg";
-import administrareImg from "@/assets/service-administrare.jpg";
 import covoareImg from "@/assets/service-covoare.jpg";
-import birouriImg from "@/assets/service-birouri.jpg";
-import autoImg from "@/assets/service-auto.jpg";
-import generalaImg from "@/assets/service-generala.jpg";
+import atelierImg from "@/assets/atelier.jpg";
+import processDetailImg from "@/assets/process-detail.jpg";
 
-export type Service = {
+export type CarpetType = {
   id: string;
   number: string;
   title: string;
@@ -15,95 +12,65 @@ export type Service = {
   details: string[];
 };
 
-export const services: Service[] = [
+export const carpetTypes: CarpetType[] = [
   {
-    id: "administrare",
+    id: "persane",
     number: "01",
-    title: "Administrarea clădirilor",
-    tagline: "Management tehnic complet",
+    title: "Covoare persane & orientale",
+    tagline: "Tabriz, Isfahan, Heriz, Kashan",
     description:
-      "Curățenie, întreținere, inspecție și aprovizionare astfel încât activitatea dumneavoastră să se desfășoare în cele mai bune condiții, fără întreruperi.",
-    image: administrareImg,
+      "Piese de patrimoniu spălate manual, cu apă rece și șampon neutru. Niciun detergent agresiv, niciun risc pentru vopsea sau urzeală.",
+    image: atelierImg,
     details: [
-      "Plan personalizat de mentenanță preventivă și corectivă",
-      "Manager de cont dedicat și raportare lunară transparentă",
-      "Aprovizionare cu consumabile sanitare și produse de curățenie",
-      "Inspecții periodice ale instalațiilor și suprafețelor",
+      "Test de migrare a culorilor înainte de spălare",
+      "Spălare manuală pe ambele fețe, periere cu peri naturali",
+      "Tratament dedicat franjurilor — albire blândă, fără înălbitor",
+      "Uscare suspendată pe verticală pentru a păstra forma",
     ],
   },
   {
-    id: "post-constructie",
+    id: "lana",
     number: "02",
-    title: "Curățenie post-construcție",
-    tagline: "Civilă și industrială",
+    title: "Covoare din lână",
+    tagline: "Bucureștene, moderne, kilim",
     description:
-      "Economisiți timp și energie lăsând în grija noastră această operațiune complexă. Acceptăm orice provocare, de la apartamente la hale industriale.",
-    image: postConstructieImg,
-    details: [
-      "Eliminarea molozului fin, prafului de ciment și a reziduurilor de șantier",
-      "Curățarea ferestrelor, ramelor și suprafețelor vitrate la standarde de recepție",
-      "Decapare, polișare și protejare pardoseli (gresie, marmură, beton, parchet)",
-      "Echipamente industriale: aspiratoare HEPA, mașini auto-propulsate, polisoare",
-    ],
-  },
-  {
-    id: "covoare",
-    number: "03",
-    title: "Curățare și spălare covoare",
-    tagline: "Tratament profesional în atelier",
-    description:
-      "Pas cu pas redăm strălucirea de la bun început prin curățarea mecanizată, șamponarea și lustruirea covoarelor — indiferent de fibră sau dimensiune.",
+      "Lâna este o fibră vie. O tratăm cu produse pH-neutre care îndepărtează praful, acarienii și petele fără să o usuce.",
     image: covoareImg,
     details: [
-      "Preluare și livrare gratuită în Brașov și zonele limitrofe",
-      "Detratare pete dificile: vin, cafea, urină animale, grăsimi",
-      "Spălare cu echipamente automate, soluții bio-degradabile",
-      "Uscare controlată în spațiu dedicat, periere și împachetare",
+      "Praf-out mecanizat pentru extragerea prafului adânc",
+      "Detratare specifică pentru păr de animale și acarieni",
+      "Spălare cu injecție-extracție și uscare controlată",
+      "Periere finală care reactivează textura naturală",
     ],
   },
   {
-    id: "birouri",
+    id: "delicate",
+    number: "03",
+    title: "Mătase, viscoză & fibre delicate",
+    tagline: "Tratament cu mănuși",
+    description:
+      "Fibrele fine cer altă chimie și altă răbdare. Spălare la rece, fără frecare mecanică, cu uscare lentă în mediu controlat.",
+    image: processDetailImg,
+    details: [
+      "Soluții cu pH neutru, fără solvenți agresivi",
+      "Spălare exclusiv manuală, fără mașină rotativă",
+      "Uscare orizontală pe grătare, ferită de soare direct",
+      "Garanție: zero deformări, zero pierderi de luciu",
+    ],
+  },
+  {
+    id: "blana",
     number: "04",
-    title: "Întreținere zilnică firme & birouri",
-    tagline: "Mediu de lucru care inspiră",
+    title: "Blănuri & covoare cu păr lung",
+    tagline: "Shaggy, miel, vacă, capră",
     description:
-      "Un mediu de lucru curat și ordonat este mai mult decât unul sănătos — este un mediu care inspiră și motivează echipa dumneavoastră.",
-    image: birouriImg,
+      "Părul lung ascunde praf, păr de animale și miros. Procesul nostru îl scoate complet și redă moliciunea de prima zi.",
+    image: atelierImg,
     details: [
-      "Program flexibil: dimineața devreme, seara sau în weekend",
-      "Personal instruit, verificat și echipat uniform",
-      "Igienizarea grupurilor sanitare, kitchenetelor și sălilor de ședință",
-      "Contracte adaptate dimensiunii și frecvenței necesare",
-    ],
-  },
-  {
-    id: "auto",
-    number: "05",
-    title: "Curățarea tapițeriilor auto",
-    tagline: "Detailing interior premium",
-    description:
-      "Folosim produse și echipamente adaptate tapițeriilor din piele sau material textil, care curăță și protejează suprafețele fără să le degradeze.",
-    image: autoImg,
-    details: [
-      "Aspirare profundă, extracție cu injecție/extracție",
-      "Tratamente specifice pentru piele naturală și ecologică",
-      "Decontaminare și ozonificare pentru eliminarea mirosurilor",
-      "Servicii pentru autoturisme, SUV, vans și flote corporate",
-    ],
-  },
-  {
-    id: "generala",
-    number: "06",
-    title: "Curățenie generală",
-    tagline: "De la A la Z",
-    description:
-      "Vă puteți baza pe o echipă de profesioniști care vă stă la dispoziție cu soluții personalizate pentru orice tip de spațiu rezidențial sau comercial.",
-    image: generalaImg,
-    details: [
-      "Curățenie de profunzime în apartamente, vile, spații comerciale",
-      "Spălare geamuri, jaluzele, draperii și mobilier tapițat",
-      "Igienizare bucătării profesionale, hote, electrocasnice",
-      "Pachete one-time sau abonamente periodice",
+      "Pre-tratament cu agent antibacterian și deodorizant",
+      "Spălare cu pieptănare profundă fibră cu fibră",
+      "Ozonificare pentru eliminarea completă a mirosurilor",
+      "Uscare cu jet de aer rece — fără degradarea pielicelei",
     ],
   },
 ];

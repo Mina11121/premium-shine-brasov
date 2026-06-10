@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/atelier.jpg";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/despre")({
@@ -21,13 +21,13 @@ function DesprePage() {
             [ Despre noi · est. 2007 ]
           </span>
           <h1 className="font-serif text-5xl md:text-7xl font-light leading-[1] tracking-tight text-balance">
-            17 ani de disciplină, instrumente potrivite și echipa care face diferența.
+            17 ani de atelier. Mii de covoare. Aceeași grijă pentru fiecare.
           </h1>
         </div>
       </section>
 
       <section className="border-b border-border">
-        <img src={heroImg} alt="Spațiu administrat de Clinica de Covoare" loading="lazy" width={1920} height={1280} className="w-full h-[60vh] object-cover" />
+        <img src={heroImg} alt="Atelierul Clinica de Covoare din Brașov" loading="lazy" width={1600} height={1200} className="w-full h-[60vh] object-cover" />
       </section>
 
       <section className="py-24 px-6">
@@ -39,13 +39,13 @@ function DesprePage() {
           </div>
           <div className="md:col-span-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
-              Activăm pe piața de specialitate încă din anul 2007. Am început într-un atelier modest din Brașov, cu o singură mașină de spălat covoare și convingerea că un mediu curat schimbă felul în care oamenii muncesc, locuiesc și se simt.
+              Am început în 2007 într-un atelier modest din Brașov, cu o singură mașină de spălat covoare și convingerea că un covor curat schimbă felul în care simți o cameră întreagă.
             </p>
             <p>
-              Astăzi acoperim întregul județ cu o echipă de profesioniști instruiți, echipamente industriale de generație nouă și o metodologie de lucru rafinată prin sute de proiecte — de la apartamente private la hale industriale și sedii corporate.
+              Astăzi avem un atelier propriu cu spațiu dedicat de uscare controlată, echipamente industriale de generație nouă și o echipă care cunoaște fiecare tip de fibră — de la mătasea unui Tabriz până la firul lung al unui shaggy contemporan.
             </p>
             <p>
-              Experiența dobândită, cultura organizațională și instrumentele de lucru ne recomandă în lupta cu rezultatele nedorite din activitățile clienților noștri.
+              Nu spălăm covoare „la kilogram". Fiecare piesă este evaluată, tratată și livrată separat. Așa am ajuns să avem clienți care ne aduc al treilea, al patrulea, al zecelea covor.
             </p>
           </div>
         </div>
@@ -58,9 +58,9 @@ function DesprePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border">
             {[
-              ["Rigoare tehnică", "Fiecare intervenție urmează un protocol clar. Echipamentele și consumabilele sunt selectate în funcție de suprafață, nu de convenabil."],
-              ["Discreție și încredere", "Lucrăm în spații sensibile: sedii executive, vile private, clinici. Confidențialitatea este parte din contract."],
-              ["Rezultat măsurabil", "Nu plecăm până nu trecem propriul audit de calitate. Pentru clienți B2B, livrăm raport detaliat al fiecărei intervenții."],
+              ["Fibra dictează metoda", "Mătasea nu se spală ca polipropilena. Lâna nu se usucă ca viscoza. Fiecare covor primește chimia și temperatura potrivite."],
+              ["Apa curată, soluții blânde", "Doar șampoane pH-neutru, bio-degradabile. Sigure pentru copii, animale și pentru cele mai delicate piese de patrimoniu."],
+              ["Rezultat sau respălare", "Dacă o pată reapare după livrare, ne întoarcem și refacem operațiunea gratuit. Fără discuții, fără birocrație."],
             ].map(([t, d]) => (
               <div key={t} className="bg-card p-10 space-y-4">
                 <h3 className="font-serif text-2xl font-normal">{t}</h3>
@@ -74,7 +74,7 @@ function DesprePage() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto text-center space-y-6">
           <h2 className="font-serif text-4xl md:text-5xl font-light tracking-tight">
-            Vrem să fim echipa dumneavoastră.
+            Lasă-ne covorul tău. Îl tratăm cum am trata unul de-al nostru.
           </h2>
           <a
             href={WHATSAPP_URL}
